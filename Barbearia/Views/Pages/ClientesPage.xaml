@@ -1,0 +1,53 @@
+<Page x:Class="Barbearia.Views.Pages.ClientesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Clientes" Background="#0D0D00">
+
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Cabeçalho -->
+        <Grid Grid.Row="0" Margin="0,0,0,20">
+            <TextBlock Text="👤 Clientes" FontSize="24" FontWeight="Bold" Foreground="White"/>
+            <Button Content="+ Novo Cliente" Style="{StaticResource BtnPrimary}"
+                    HorizontalAlignment="Right" Click="BtnNovo_Click"/>
+        </Grid>
+
+        <!-- Busca -->
+        <Grid Grid.Row="1" Margin="0,0,0,14">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" x:Name="TxtBusca" Margin="0,0,10,0"
+                     Text="" FontSize="13"/>
+            <Button Grid.Column="1" Content="🔍 Buscar" Style="{StaticResource BtnSecondary}"
+                    Click="BtnBuscar_Click"/>
+        </Grid>
+
+        <!-- DataGrid -->
+        <DataGrid Grid.Row="2" x:Name="GridClientes">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                <DataGridTextColumn Header="Nome" Binding="{Binding Nome}" Width="*"/>
+                <DataGridTextColumn Header="Telefone" Binding="{Binding Telefone}" Width="130"/>
+                <DataGridTextColumn Header="E-mail" Binding="{Binding Email}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Botões -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
+            <Button Content="✏ Editar" Style="{StaticResource BtnSecondary}"
+                    Margin="0,0,8,0" Click="BtnEditar_Click"/>
+            <Button Content="📋 Histórico" Style="{StaticResource BtnSecondary}"
+                    Margin="0,0,8,0" Click="BtnHistorico_Click"/>
+            <Button Content="🗑 Excluir" Style="{StaticResource BtnDanger}"
+                    Click="BtnExcluir_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

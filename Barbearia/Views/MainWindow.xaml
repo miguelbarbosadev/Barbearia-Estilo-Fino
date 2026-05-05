@@ -1,0 +1,72 @@
+<Window x:Class="Barbearia.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="✂ Barbearia Estilo Fino"
+        Height="700" Width="1100"
+        MinHeight="600" MinWidth="900"
+        WindowStartupLocation="CenterScreen"
+        Background="#0D0D00">
+
+    <Window.Resources>
+        <Style x:Key="NavButton" TargetType="Button">
+            <Setter Property="Background"               Value="Transparent"/>
+            <Setter Property="Foreground"               Value="#A08040"/>
+            <Setter Property="FontSize"                 Value="13"/>
+            <Setter Property="Padding"                  Value="16,12"/>
+            <Setter Property="BorderThickness"          Value="0"/>
+            <Setter Property="Cursor"                   Value="Hand"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Margin"                   Value="0,2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd" Background="{TemplateBinding Background}"
+                                CornerRadius="8" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#2A1E00"/>
+                                <Setter Property="Foreground" Value="#D4A017"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Grid.Column="0" Background="#111100">
+            <DockPanel>
+                <!-- Logo -->
+                <StackPanel DockPanel.Dock="Top" Margin="0,30,0,30" HorizontalAlignment="Center">
+                    <TextBlock Text="✂" FontSize="36" HorizontalAlignment="Center" Foreground="#D4A017"/>
+                    <TextBlock Text="Barbearia Estilo Fino" FontSize="16" FontWeight="Bold"
+                               HorizontalAlignment="Center" Foreground="White" Margin="0,6,0,0"/>
+                </StackPanel>
+
+                <!-- Navegação -->
+                <StackPanel DockPanel.Dock="Top" x:Name="NavPanel" Margin="12,0">
+                    <Button Content="📅  Calendário"   Style="{StaticResource NavButton}" Tag="Calendario"   Click="NavBtn_Click"/>
+                    <Button Content="🕐  Agendamentos" Style="{StaticResource NavButton}" Tag="Agendamentos" Click="NavBtn_Click"/>
+                    <Button Content="👤  Clientes"     Style="{StaticResource NavButton}" Tag="Clientes"     Click="NavBtn_Click"/>
+                    <Button Content="💈  Barbeiros"    Style="{StaticResource NavButton}" Tag="Barbeiros"    Click="NavBtn_Click"/>
+                    <Button Content="✂  Serviços"     Style="{StaticResource NavButton}" Tag="Servicos"     Click="NavBtn_Click"/>
+                </StackPanel>
+
+            </DockPanel>
+        </Border>
+
+        <!-- Conteúdo -->
+        <Frame x:Name="MainFrame" Grid.Column="1"
+               NavigationUIVisibility="Hidden"
+               Background="#0D0D00"/>
+    </Grid>
+</Window>

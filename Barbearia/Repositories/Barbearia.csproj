@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
+          Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FA6630D5-98E3-4687-83D0-B435EB5F25F0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Barbearia</RootNamespace>
+    <AssemblyName>Barbearia</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <LangVersion>7.3</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Referências do .NET Framework -->
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+
+    <!-- Entity Framework 6 -->
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+
+    <!-- MySQL -->
+    <Reference Include="MySql.Data">
+      <HintPath>..\packages\MySql.Data.8.0.33\lib\net48\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.EntityFramework">
+      <HintPath>..\packages\MySql.Data.EntityFramework.8.0.33\lib\net48\MySql.Data.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.EntityFramework.Design">
+      <HintPath>..\packages\MySql.Data.EntityFramework.8.0.33\lib\net48\MySql.Data.EntityFramework.Design.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!-- App -->
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <!-- Código-fonte -->
+  <ItemGroup>
+    <Compile Include="Data\BarbeariaContext.cs" />
+    <Compile Include="Data\BarbeariaInitializer.cs" />
+    <Compile Include="Entidades\Agendamento.cs" />
+    <Compile Include="Entidades\Barbeiro.cs" />
+    <Compile Include="Entidades\Cliente.cs" />
+    <Compile Include="Entidades\Servico.cs" />
+    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\AgendamentoRepository.cs" />
+    <Compile Include="Services\Services.cs" />
+    <Compile Include="Views\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\DashboardPage.xaml.cs">
+      <DependentUpon>DashboardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\CalendarioPage.xaml.cs">
+      <DependentUpon>CalendarioPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\AgendamentosPage.xaml.cs">
+      <DependentUpon>AgendamentosPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\AgendamentoDialog.xaml.cs">
+      <DependentUpon>AgendamentoDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\ClientesPage.xaml.cs">
+      <DependentUpon>ClientesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\ClienteDialog.xaml.cs">
+      <DependentUpon>ClienteDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\HistoricoClienteDialog.xaml.cs">
+      <DependentUpon>HistoricoClienteDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\BarbeirosPage.xaml.cs">
+      <DependentUpon>BarbeirosPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\BarbeiroDialog.xaml.cs">
+      <DependentUpon>BarbeiroDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\ServicosPage.xaml.cs">
+      <DependentUpon>ServicosPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\ServicoDialog.xaml.cs">
+      <DependentUpon>ServicoDialog.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <!-- XAML Pages -->
+  <ItemGroup>
+    <Page Include="Views\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\DashboardPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\CalendarioPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\AgendamentosPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\AgendamentoDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\ClientesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\ClienteDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\HistoricoClienteDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\BarbeirosPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\BarbeiroDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\ServicosPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\ServicoDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
+  <!-- EF targets (gerado automaticamente pelo NuGet) -->
+  <Import Project="$(SolutionDir)\packages\EntityFramework.6.5.1\build\EntityFramework.targets"
+          Condition="Exists('$(SolutionDir)\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+
+</Project>

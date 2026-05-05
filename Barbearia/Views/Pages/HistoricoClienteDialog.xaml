@@ -1,0 +1,25 @@
+<Window x:Class="Barbearia.Views.Pages.HistoricoClienteDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Height="420" Width="650"
+        WindowStartupLocation="CenterOwner"
+        Background="#0D0D00">
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="TxtTitulo" FontSize="18" FontWeight="Bold"
+                   Foreground="#D4A017" Margin="0,0,0,16"/>
+        <DataGrid Grid.Row="1" x:Name="GridHistorico" AutoGenerateColumns="False"
+                  CanUserAddRows="False" Background="#1A1400" Foreground="White">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Data" Binding="{Binding DataHora, StringFormat=dd/MM/yyyy HH:mm}" Width="130"/>
+                <DataGridTextColumn Header="Barbeiro" Binding="{Binding Barbeiro.Nome}" Width="*"/>
+                <DataGridTextColumn Header="Serviço" Binding="{Binding Servico.Nome}" Width="*"/>
+                <DataGridTextColumn Header="Valor" Binding="{Binding Servico.Preco, StringFormat=C2}" Width="80"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="90"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
